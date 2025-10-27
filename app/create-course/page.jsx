@@ -15,6 +15,7 @@ import { db } from '@/configs/db';
 import { CourseList } from '@/configs/schema';
 import uuid4 from 'uuid4';
 import { useUser } from '@clerk/nextjs';
+import { useRouter } from 'next/navigation';
 
 
 
@@ -40,6 +41,7 @@ const {userCourseInput,setUserCourseInput}=useContext(UserInputContext);
 const [loading,setLoading]=useState(false);
 const [activeIndex,setActiveIndex]=useState(0);  
 const{user}=useUser();  
+const router = useRouter();
   useEffect(()  => {
     console.log(userCourseInput);
   },[userCourseInput])
@@ -59,6 +61,8 @@ const GenerateCourseLayout = async() => {
 };
 
 const SaveCourseLayoutInDb = async(courseLayout) => {
+
+  var id = uuid4(); //Course ID
   var id = uuid4();
   setLoading(true);
   const result = await db.insert(CourseList).values({
@@ -72,6 +76,8 @@ const SaveCourseLayoutInDb = async(courseLayout) => {
     userProfileImage: user?.imageUrl
   })
   console.log("Finish");
+  setLoading(false);
+  router.replace('/create-course/'+id);  
   setLoading(false);  
 }
 
