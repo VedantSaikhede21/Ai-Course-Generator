@@ -1,4 +1,4 @@
-import { pgTable, serial, varchar } from "drizzle-orm/pg-core";
+import { json, pgTable, serial, varchar } from "drizzle-orm/pg-core";
 
 export const CourseList = pgTable('courseList', {
     id: serial('id').primaryKey(),
@@ -8,6 +8,6 @@ export const CourseList = pgTable('courseList', {
     level: varchar('level').notNull(),
     courseOutput: json('courseOutput').notNull(),
     createdBy: varchar('createdBy').notNull(),
-    userName: varchar('username'),
+    userName: varchar('userName'),
     userProfileImage: varchar('userProfileImage')
 })

@@ -11,6 +11,10 @@ import { UserInputContext } from '../_context/UserInputContext';
 import { GoogleGenAI } from "@google/genai";
 import { GenerateCourseLayout_AI } from '@/configs/AiModel';
 import LoadingDialog from './_components/LoadingDialog';
+import { db } from '@/configs/db';
+import { CourseList } from '@/configs/schema';
+import uuid4 from 'uuid4';
+import { useUser } from '@clerk/nextjs';
 
 
 
@@ -35,8 +39,12 @@ function CreateCourse() {
 const {userCourseInput,setUserCourseInput}=useContext(UserInputContext);
 const [loading,setLoading]=useState(false);
 const [activeIndex,setActiveIndex]=useState(0);  
+const{user}=useUser();  
+  useEffect(()  => {
+    console.log(userCourseInput);
+  },[userCourseInput])
 
-const GenerateCourseLayout = async () => {
+const GenerateCourseLayout = async() => {
   setLoading(true);
   const BASIC_PROMPT = 'Generate a course Tutorial on following details with feild as Course Name, Description, Along with Chapter Name, about, Duration ';
   const USER_INPUT_PROMPT = 'Category: ' + userCourseInput?.category + ', Topic: ' + userCourseInput?.topic + ', Level: ' + userCourseInput?.level + ', Duration: ' + userCourseInput?.duration + ', No of Chapters: ' + userCourseInput?.noOfChapters + ', Display Video Link: ' + userCourseInput?.displayvideo + '. Make sure to generate the response in JSON format only with keys as courseName, description, chapters (Array of objects with chapterName, about, duration as keys).';
@@ -47,8 +55,25 @@ const GenerateCourseLayout = async () => {
   console.log(text);
   console.log(JSON.parse(text));
   setLoading(false);
- 
+  SaveCourseLayoutInDb(JSON.parse(result.response?.text())); 
 };
+
+const SaveCourseLayoutInDb = async(courseLayout) => {
+  var id = uuid4();
+  setLoading(true);
+  const result = await db.insert(CourseList).values({
+    courseId: id,
+    name: userCourseInput?.topic,
+    level: userCourseInput?.level,
+    category: userCourseInput?.category,
+    courseOutput: courseLayout,
+    createdBy: user?.primaryEmailAddress?.emailAddress,
+    userName: user?.fullName,
+    userProfileImage: user?.imageUrl
+  })
+  console.log("Finish");
+  setLoading(false);  
+}
 
 
 useEffect(()=>{
