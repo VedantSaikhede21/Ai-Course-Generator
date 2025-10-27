@@ -12,21 +12,18 @@ import {
 
 function LoadingDialog({loading}) {
   return (
-    <AlertDialog open={loading}>
+    <AlertDialog open={loading}>  
   
   <AlertDialogContent>
-    <AlertDialogTitle>
-         <AlertDialogHeader>
-            <AlertDialogDescription>
-                <div className='flex flex-col justify-center items-center py-10'>
-                <Image src={"/Loader.gif"} width={100} height={100} alt="Loading..." />
-                    <h2>
-                        Generating Course Layout...Please wait
-                    </h2>
-                </div>
-            </AlertDialogDescription>
-        </AlertDialogHeader>
-    </AlertDialogTitle>
+    <AlertDialogHeader className="flex flex-col items-center py-10">
+      <img src="/Loader.gif" width={100} height={100} alt="Loading..." />
+      <AlertDialogTitle className="mt-4 text-xl">
+        Generating Course Layout...
+      </AlertDialogTitle>
+      <AlertDialogDescription className="text-center">
+        Please wait
+      </AlertDialogDescription>
+    </AlertDialogHeader>
   </AlertDialogContent>
 </AlertDialog>
   )
