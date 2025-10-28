@@ -82,4 +82,3 @@ function CourseLayout({params}) {
 }
 
 export default CourseLayout;
-
