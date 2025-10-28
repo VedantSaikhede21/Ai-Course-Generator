@@ -12,3 +12,12 @@ export const CourseList = pgTable('courseList', {
     userName: varchar('userName'),
     userProfileImage: varchar('userProfileImage')
 })
+
+
+export const Chapters = pgTable('chapters', {
+    id: serial('id').primaryKey(),
+    courseId: varchar('courseid').notNull(),
+    chapterId: varchar('chapterId').notNull(),
+    content: json('content').notNull(),
+    videoId: varchar('videoId').notNull(),
+});
