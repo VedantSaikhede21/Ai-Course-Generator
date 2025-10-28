@@ -50,26 +50,29 @@ function EditChapters({ course,index, refreshData }) {
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Edit Chapter</DialogTitle>
-          <DialogDescription>
-            <div className="mt-3">
-              <label>Course Title</label>
-              <Input
-                value={chapterName}
-                onChange={(event) => setName(event?.target.value)}
-                placeholder="Enter chapter name"
-              />
-            </div>
+          <DialogDescription asChild>
+             <div>
+                <div className="mt-3">
+      <label>Course Title</label>
+      <Input
+        value={chapterName}
+        onChange={(event) => setName(event?.target.value)}
+        placeholder="Enter chapter name"
+      />
+    </div>
 
-            <div className="mt-3">
-              <label>Course Description</label>
-              <Textarea
-                className="h-40"
-                value={about}
-                onChange={(event) => setAbout(event?.target.value)}
-                placeholder="Enter about"
-              />
-            </div>
-          </DialogDescription>
+    <div className="mt-3">
+      <label>Course Description</label>
+      <Textarea
+        className="h-40"
+        value={about}
+        onChange={(event) => setAbout(event?.target.value)}
+        placeholder="Enter about"
+      />
+    </div>
+  </div>
+</DialogDescription>
+
         </DialogHeader>
 
         <DialogFooter>
