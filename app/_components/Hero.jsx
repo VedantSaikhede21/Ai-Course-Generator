@@ -1,5 +1,6 @@
 import { SignInButton } from '@clerk/nextjs'
 import React from 'react'
+import { Button } from '@/components/ui/button'
 
 function Hero() {
   return (
@@ -16,14 +17,14 @@ function Hero() {
       </p>
 
       <div className="mt-4 flex justify-center gap-4 sm:mt-6">
-        <a
+        <SignInButton
           className="inline-block rounded border border-primary bg-primary px-5 py-3 font-medium text-white shadow-sm transition-colors hover:bg-primary"
           href="#"
         >
           
-          Get Started
+          <Button>Get Started</Button>
           
-        </a>
+        </SignInButton>
 
        
       </div>
