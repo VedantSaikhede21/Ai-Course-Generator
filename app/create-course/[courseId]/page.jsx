@@ -25,11 +25,11 @@ function CourseLayout({params}) {
 
 
     {/* Basic Info */}
-        <CourseBasicInfo course={course} />
+        <CourseBasicInfo course={course} refreshData={()=>GetCourse()}/>
     {/* Course Detail */}
         <CourseDetail course={course} /> 
     {/* List of Lesson */}
-        <ChapterList course={course} />
+        <ChapterList course={course} refreshData={()=>GetCourse()}/>
     </div>
   )
 }
