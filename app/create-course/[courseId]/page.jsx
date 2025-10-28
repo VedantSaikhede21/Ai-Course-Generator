@@ -29,7 +29,7 @@ function CourseLayout({params}) {
     {/* Course Detail */}
         <CourseDetail course={course} /> 
     {/* List of Lesson */}
-        <ChapterList course={course}/>
+        <ChapterList course={course} />
     </div>
   )
 }
