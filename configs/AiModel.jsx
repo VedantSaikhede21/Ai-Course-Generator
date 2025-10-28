@@ -53,7 +53,12 @@ export const GenerateCourseLayout_AI = model.startChat( {
         "about": "Variables, data types, functions, and DOM manipulation.",
         "duration": "4 hours"
       }
-    ]
+    ],
+    "category": "Web Development",
+    "topic": "Web Development",
+    "level": "Beginner",
+    "duration": "9 hours",
+    "numberOfChapters": 3
   }
 }
 '''

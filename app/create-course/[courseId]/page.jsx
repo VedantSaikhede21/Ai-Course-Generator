@@ -5,6 +5,7 @@ import { useUser } from '@clerk/nextjs';
 import { and, eq } from 'drizzle-orm';
 import React, { useEffect, useState } from 'react'
 import CourseBasicInfo from './_components/CourseBasicInfo';
+import CourseDetail from './_components/CourseDetail';
 
 function CourseLayout({params}) {
     const {user}=useUser();
@@ -25,9 +26,9 @@ function CourseLayout({params}) {
     {/* Basic Info */}
         <CourseBasicInfo course={course} />
     {/* Course Detail */}
-
+        <CourseDetail course={course} /> 
     {/* List of Lesson */}
-
+        <CourseList course={course}/>
     </div>
   )
 }
