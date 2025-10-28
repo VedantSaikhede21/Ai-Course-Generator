@@ -15,7 +15,7 @@ function CourseBasicInfo({course}) {
                 <Button className='w-full mt-5'>Start</Button>
             </div>
             <div>
-                <Image src={'/placeholder.png'} alt="Placeholder image" width={300} height={300} className='w-full rounded-xl h-[250px] object-cover'/>
+                <Image src={'/placeholder.png'} alt={'placeholderImage'}width={300} height={300} className='w-full rounded-xl h-[250px] object-cover'/>
             </div>
         </div>
         

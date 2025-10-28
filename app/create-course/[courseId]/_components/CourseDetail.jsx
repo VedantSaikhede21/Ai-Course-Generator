@@ -1,6 +1,6 @@
 import React from 'react'
 import { HiOutlineChartBar } from "react-icons/hi";
-import { FaRegClock } from "react-icons/fa6";
+import { HiOutlineClock } from "react-icons/hi2";
 import { HiOutlineBookOpen } from "react-icons/hi2";
 import { HiOutlinePlayCircle } from "react-icons/hi2";
 
@@ -16,7 +16,7 @@ function CourseDetail({course}) {
                 </div>
             </div>
             <div className='flex gap-2'>
-                <FaRegClock  className='text-4xl text-primary'/>
+                <HiOutlineClock  className='text-4xl text-primary'/>
                 <div>
                     <h2 className='text-xs text-gray-500'>Duration</h2>
                     <h2 className='font-medium text-lg'>{course?.courseOutput?.duration}</h2>

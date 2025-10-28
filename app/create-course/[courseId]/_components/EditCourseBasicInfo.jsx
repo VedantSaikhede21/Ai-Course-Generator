@@ -18,7 +18,14 @@ import { Button } from '@/components/ui/button';
 
 function EditCourseBasicInfo({course}) {
 
-   
+    const[name,setName]=useState();
+    const[description,setDescription]=useState();
+
+    const onUpdateHandler=()=>{
+       course.courseOutput.course.name=name;
+       course.courseOutput.course.description=description;
+       course.log(course);
+    }
 
 
   return (
